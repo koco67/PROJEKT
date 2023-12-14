@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ez+SRdIo/tZ7s5wq9tg1FkFq6jIEG2P8txIjZ9iEoKA6qEGg2PWsnABhTG8KAEna" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Pokemon Card Shop</title>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">Pokemon Shop</div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="cart-icon" onclick="openCart()">
+            🛒 <!-- Unicode Shopping Cart Symbol -->
+            <span id="cart-count">0</span>
+        </div>
+        <div class="settings-icon">
+            ⚙️ <!-- Unicode Gear Symbol -->
+        </div>
+        <div class="menu-icon">&#9776;</div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Product Cards (Placeholder) -->
+        <div class="product-card">
+            <img src="/frontend/src/main/resources/static/pikachu.jpg" alt="Pikachu Card">
+            <div class="product-name">Pikachu Card</div>
+        </div>
+        <div class="product-card">
+            <img src="/frontend/src/main/resources/static/bulbasaur.jpg" alt="Bulbasaur Card">
+            <div class="product-name">Bulbasaur Card</div>
+        </div>  
+        <div class="product-card">
+            <img src="/frontend/src/main/resources/static/charmander.jpg" alt="Charmander Card">
+            <div class="product-name">Charmander Card</div>
+        </div>
+        <div class="product-card">
+            <img src="/frontend/src/main/resources/static/squirtle.jpg" alt="Squirtle Card">
+            <div class="product-name">Squirtle Card</div>
+        </div>      </div>
+
+    <!-- Shopping Cart Modal -->
+    <div class="cart-modal" id="cartModal">
+        <!-- Cart content goes here -->
+        <div class="cart-items">Your cart is empty.</div>
+        <button onclick="closeCart()">Close</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
