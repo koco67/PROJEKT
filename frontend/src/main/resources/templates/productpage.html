@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ez+SRdIo/tZ7s5wq9tg1FkFq6jIEG2P8txIjZ9iEoKA6qEGg2PWsnABhTG8KAEna" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Pokemon Card Shop Product Page</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="logo">Pokemon Shop</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+  </div>
+  <div class="cart-icon" onclick="openCart()">
+    🛒 <!-- Unicode Shopping Cart Symbol -->
+    <span id="cart-count">0</span>
+  </div>
+  <div class="settings-icon">
+    ⚙️ <!-- Unicode Gear Symbol -->
+  </div>
+  <div class="dropdown" style="float:right;">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <!-- Popup-Menü -->
+    <div class="dropdown-content" id="dropdownMenu" style="right: 0">
+      <a href="#">Order History</a>
+      <a href="#">Account</a>
+      <a href="#">Help</a>
+      <a href="#">Switch Account</a>
+      <a href="#">Log out</a>
+    </div>
+  </div>
+</nav>
+
+<div class="product-description">
+  <h1>Pikachu Card</h1>
+  <p>Description</p>
+  <p>Price</p>
+  <p>Foiltype</p>
+  <button class="basketButton">Add to Basket</button>
+</div>
+
+<!-- Main Content -->
+<div class="main-content">
+  <!-- Product Cards (Placeholder) -->
+  <div class="productpage-card">
+    <a href="#">
+      <img src="/frontend/src/main/resources/static/pikachu.jpg" alt="Pikachu Card">
+      <div class="product-name">Pikachu Card</div>
+    </a>
+  </div>
+</div>
+
+<!-- Shopping Cart Modal -->
+<div class="cart-modal" id="cartModal">
+  <!-- Cart content goes here -->
+  <div class="cart-items">Your cart is empty.</div>
+  <button onclick="closeCart()">Close</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
