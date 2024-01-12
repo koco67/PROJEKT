@@ -149,3 +149,17 @@ body {
     padding: 10px;
     cursor: pointer;
 }
+
+/*Login-Page: */
+
+#login-box {
+    background-color: #333;
+    height: 300px;
+    width: 400px;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    padding: 16px;
+    border-radius: 16px;
+    flex-direction:column;
+}
