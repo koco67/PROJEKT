@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ez+SRdIo/tZ7s5wq9tg1FkFq6jIEG2P8txIjZ9iEoKA6qEGg2PWsnABhTG8KAEna" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Pokemon Card Shop Product Page</title>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="logo">Pokemon Shop</div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search...">
+  </div>
+  <div class="cart-icon" onclick="openCart()">
+    🛒 <!-- Unicode Shopping Cart Symbol -->
+    <span id="cart-count">0</span>
+  </div>
+  <div class="settings-icon">
+    ⚙️ <!-- Unicode Gear Symbol -->
+  </div>
+  <div class="dropdown" style="float:right;">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <!-- Popup-Menü -->
+    <div class="dropdown-content" id="dropdownMenu" style="right: 0">
+      <a href="#">Order History</a>
+      <a href="#">Account</a>
+      <a href="#">Help</a>
+      <a href="#">Switch Account</a>
+      <a href="#">Log out</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="main-content">
+  <div id="login-box">
+    <p style="font-size: 44px; margin: 0; color: white; width: 100%; display: flex; justify-content: center;">Login</p>
+    <form style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; flex-direction: column;" action="/login" method="post">
+      <label style="font-size: 16px; color: white;" for="username">Benutzername:</label>
+      <input style="padding-top: 8px;" type="text" id="username" name="username" required>
+      <br>
+      <label style="font-size: 16px; color: white;" for="password">Passwort:</label>
+      <input style="padding-top: 8px;" type="password" id="password" name="password" required>
+      <br>
+      <button style="padding-top: 8px; font-size: 16px;" type="submit">Login</button>
+    </form>
+  </div>
+</div>
+
+<!-- Shopping Cart Modal -->
+<div class="cart-modal" id="cartModal">
+  <!-- Cart content goes here -->
+  <div class="cart-items">Your cart is empty.</div>
+  <button onclick="closeCart()">Close</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
