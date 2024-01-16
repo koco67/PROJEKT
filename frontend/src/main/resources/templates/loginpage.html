@@ -9,31 +9,9 @@
 </head>
 <body>
 
-<!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="logo">Pokemon Shop</div>
-  <div class="search-bar">
-    <input type="text" placeholder="Search...">
-  </div>
-  <div class="cart-icon" onclick="openCart()">
-    🛒 <!-- Unicode Shopping Cart Symbol -->
-    <span id="cart-count">0</span>
-  </div>
-  <div class="settings-icon">
-    ⚙️ <!-- Unicode Gear Symbol -->
-  </div>
-  <div class="dropdown" style="float:right;">
-    <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    <!-- Popup-Menü -->
-    <div class="dropdown-content" id="dropdownMenu" style="right: 0">
-      <a href="#">Order History</a>
-      <a href="#">Account</a>
-      <a href="#">Help</a>
-      <a href="#">Switch Account</a>
-      <a href="#">Log out</a>
-    </div>
-  </div>
-</nav>
+<!-- Navigation Bar-->
+<div id="navbarContainer"></div>
+<script src="navibar.js"></script>
 
 <!-- Main Content -->
 <div class="main-content">
