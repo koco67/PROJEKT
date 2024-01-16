@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ez+SRdIo/tZ7s5wq9tg1FkFq6jIEG2P8txIjZ9iEoKA6qEGg2PWsnABhTG8KAEna" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Pokemon Card Shop Invoice Page</title>
+</head>
+<body>
+
+<!-- Navigation Bar-->
+<div id="navbarContainer"></div>
+<script src="navibar.js"></script>
+
+<!-- Main Content -->
+<div class="main-content-invoice">
+    <h1 style="font-size: 44px; color: #333;">Invoice</h1>
+    <div id="invoice-box">
+        <div class="invoice-contents">
+          <h1 style="font-size: 32px; margin: 0; color: white; width: 100%;">Itemname</h1>
+          <hr style="width: 100%;">
+          <p style="font-size: 20px; color: white;">Invoice number: ####</p>
+          <p style="font-size: 20px; color: white;">Bill to:</p>
+          <p style="font-size: 20px; color: white;">Buyer name: "user.getName()"</p> <!--Get Anfrage aus der Datenbank wo die User eingespeichert sind ergänzen!-->
+          <p style="font-size: 20px; color: white;">Buyer address: "user.getAddress()"</p>
+          <p style="font-size: 20px; color: white;">Buyer phone number: "user.getPhonenumber()"</p>
+          <p style="font-size: 20px; color: white;">Buyer email: "user.getEmail()"</p>
+          <hr style="width: 100%;">
+          <br>
+          <table style="border-collapse: collapse;">
+            <tr bgcolor="lightgrey" align="left">
+                <th style="padding: 10px; border-bottom: 1px solid #333; border-right: 1px solid #333;">Item: "product.getName()"</th>
+                <th style="padding: 10px; border-bottom: 1px solid #333; border-right: 1px solid #333;">Quantity: "user.getAmountBought(product)"</th> <!--Nur beispiel Methoden, es macht eventuell Sinn seperat eine Invoice Klasse zu erstellen-->
+                <th style="padding: 10px; border-bottom: 1px solid #333; border-right: 1px solid #333;">Price per Unit: "product.getPrice()"</th>
+                <th style="padding: 10px; border-bottom: 1px solid #333; border-right: 1px solid #333;">Amount: "user.getAmountBought(product)*product.getPrice()"</th>
+            </tr>
+            <tr bgcolor="lightgrey" align="left">
+                <th style="padding: 10px;"></th>
+                <th style="padding: 10px;"></th>
+                <th style="padding: 10px;"></th>
+                <th style="padding: 10px;">Total: "user.getAmountBought(product)*product.getPrice()"</th>
+            </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+
+<!-- Shopping Cart Modal -->
+<div class="cart-modal" id="cartModal">
+  <!-- Cart content goes here -->
+  <div class="cart-items">Your cart is empty.</div>
+  <button onclick="closeCart()">Close</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
