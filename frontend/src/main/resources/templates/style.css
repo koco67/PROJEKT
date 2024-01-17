@@ -230,3 +230,33 @@ body {
     border-radius: 16px;
     flex-direction:column;
 }
+
+/*Basket-Page: */
+
+.basket-page-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 2%;
+}
+
+#empty-basket-box {
+    background-color: #333;
+    height: 200px;
+    width: 40%;
+    display: flex;
+    align-items:flex-start;
+    justify-content: space-between;
+    padding: 16px;
+    border-radius: 16px;
+    flex-direction:column;
+}
+
+#back-to-shop-button {
+    padding-top: 4px;
+    font-size: 16px;
+    background-color: white;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
