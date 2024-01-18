@@ -1,6 +1,6 @@
 package de.htw.product.controller;
 
-import de.htw.product.service.ProductService;
+import de.htw.product.service.impl.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/rest/product")
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductService songService;
+    private final ProductService productServiceService;
 
 }
