@@ -6,7 +6,7 @@ services:
     image: mysql:8.0
     container_name: mysql
     ports:
-      - "3306:3306"
+      - "3366:3306"
     volumes:
       - ./:/app/
     environment:

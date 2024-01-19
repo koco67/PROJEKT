@@ -17,5 +17,5 @@ public class Product {
     private String name;
     private String foiltype;
     private String description;
-    private int price;
+    private float price;
 }
