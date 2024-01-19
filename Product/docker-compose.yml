@@ -10,10 +10,10 @@ services:
     volumes:
       - ./:/app/
     environment:
-      MYSQL_DATABASE: demo
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user
-      MYSQL_ROOT_PASSWORD: users
+      MYSQL_DATABASE: sql11677927
+      MYSQL_USER: sql11677927
+      MYSQL_PASSWORD: bQWR76Jty8
+      MYSQL_ROOT_PASSWORD: bQWR76Jty8
     networks:
       - internal
 
@@ -44,7 +44,7 @@ services:
     networks:
       - internal
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/demo?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+      - SPRING_DATASOURCE_URL=jdbc:mysql://sql11.freemysqlhosting.net:3306/pokemons
       - spring_rabbitmq_host=rabbitmq-container
       - spring_rabbitmq_port=5672
 
