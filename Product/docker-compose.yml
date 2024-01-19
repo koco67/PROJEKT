@@ -2,16 +2,18 @@ version: "3.9"
 
 services:
   database:
-    image: postgres:12
-    container_name: postgres
+    platform: linux/x86_64
+    image: mysql:8.0
+    container_name: mysql
     ports:
       - "3306:3306"
     volumes:
       - ./:/app/
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: postgres
+      MYSQL_DATABASE: demo
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: users
     networks:
       - internal
 
@@ -42,12 +44,10 @@ services:
     networks:
       - internal
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://database:5432/postgres
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/demo?useSSL=false&allowPublicKeyRetrieval=true&useLegacyDatetimeCode=false&serverTimezone=UTC
       - spring_rabbitmq_host=rabbitmq-container
       - spring_rabbitmq_port=5672
 
 networks:
   internal:
     name: internal
-
-
