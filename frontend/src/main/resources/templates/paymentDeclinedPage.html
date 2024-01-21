@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ez+SRdIo/tZ7s5wq9tg1FkFq6jIEG2P8txIjZ9iEoKA6qEGg2PWsnABhTG8KAEna" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Payment declined Page</title>
+</head>
+
+<!--This page should be shown if a payment has NOT been successful-->
+<body>
+
+<!-- Navigation Bar-->
+<div id="navbarContainer"></div>
+<script src="navibar.js"></script>
+
+<!-- Main Content -->
+<div style="padding: 32px;">
+<h1 style="font-size: 44px; margin: 0; color: #333;">PAYMENT DECLINED<br>
+    <br>
+    Please try again with another payment method
+</h1>
+
+</div>
+
+<!-- Shopping Cart Modal -->
+<div class="cart-modal" id="cartModal">
+  <!-- Cart content goes here -->
+  <div class="cart-items">Your cart is empty.</div>
+  <button onclick="closeCart()">Close</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
