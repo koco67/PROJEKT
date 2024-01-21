@@ -11,7 +11,9 @@ document.getElementById('navbarContainer').innerHTML = '<!DOCTYPE html>\n' +
     '\n' +
     '<!-- Navigation Bar -->\n' +
     '<nav class="navbar">\n' +
+    '    <a href="index.html">'+
     '  <div class="logo">Pokemon Shop</div>\n' +
+    '    <a/>\n' +
     '  <div class="search-bar">\n' +
     '    <input type="text" placeholder="Search...">\n' +
     '  </div>\n' +

@@ -1,10 +1,9 @@
-package de.htw.product.service;
+package de.htw.product.service.interfaces;
 
+import de.htw.product.model.Product;
 import de.htw.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import Product.src.main.java.de.htw.product.model.Product.java
 public interface IProductService
 {
     void createProduct (Product product);
