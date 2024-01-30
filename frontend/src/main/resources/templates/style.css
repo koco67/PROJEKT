@@ -289,3 +289,56 @@ body {
     border-radius: 16px;
     flex-direction:column;
 }
+
+/*PaymentMethod-Page: */ 
+
+#paymentMethod-box {
+    background-color: #333;
+    height: 100px;
+    width:fit-content;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    padding: 16px;
+    border-radius: 16px;
+    flex-direction:column;
+}
+
+.paymentMethod-contents {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    flex-direction: row;
+    width: fit-content;
+}
+
+.paymentMethod-address-contents {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: fit-content;
+}
+
+.paypal-button {
+    display:flex;
+    background-color: blue;
+    height: 80%;
+    width: 140px;
+    margin-left: 5%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.creditCard-button {
+    display:flex;
+    background-color: lightgray;
+    height: 80%;
+    width: 200px;
+    margin-left: 5%;
+    align-items: center;
+    justify-content: center;
+    border-radius:  4px;
+    cursor: pointer;
+}
