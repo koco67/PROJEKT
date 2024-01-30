@@ -1,18 +1,20 @@
 package de.htw.product.service.interfaces;
 
-import de.htw.product.model.Product;
-import de.htw.product.repository.ProductRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import de.htw.product.dto.ProductRequest;
+import de.htw.product.dto.ProductResponse;
+import org.springframework.http.ResponseEntity;
+
+import java.net.URISyntaxException;
+
 public interface IProductService
 {
-    void createProduct (Product product);
+    ResponseEntity<ProductResponse> createProduct (ProductRequest productRequest) throws URISyntaxException;
 
-    void updateProduct (Product product);
+    ResponseEntity<ProductResponse> updateProduct (Integer id, ProductRequest productRequest);
 
-    void deleteProduct (Product product);
+    ResponseEntity<ProductResponse> deleteProduct (Integer id);
 
-    Product getProduct(int id);
+    ResponseEntity<ProductResponse> getProduct(int id);
 
-    Iterable<Product> getAllProducts();
+    ResponseEntity<Iterable<ProductResponse>> getAllProducts();
 }

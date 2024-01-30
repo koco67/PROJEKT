@@ -1,4 +1,4 @@
-package de.htw.songservice.exception;
+package de.htw.product.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
