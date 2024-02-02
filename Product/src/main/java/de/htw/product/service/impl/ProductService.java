@@ -23,7 +23,8 @@ public class ProductService implements IProductService {
     private final ProductRepository productRepository;
     private final WebService webService;
 
-    public ResponseEntity<ProductResponse> createProduct (ProductRequest productRequest) throws URISyntaxException {
+    public ResponseEntity<ProductResponse> createProduct (ProductRequest productRequest, String token) throws URISyntaxException {
+        webService.checkToken(token);
         if(productRequest.getDescription() == null || productRequest.getFoiltype() == null || productRequest.getName() == null || productRequest.getPrice() == null) {
             throw new BadRequestException("Product needs to have name, foiltype, description and price.");
         }
@@ -35,7 +36,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<ProductResponse> updateProduct(Integer id, ProductRequest productRequest) {
+    public ResponseEntity<ProductResponse> updateProduct(Integer id, ProductRequest productRequest, String token) {
+        webService.checkToken(token);
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
         if(productRequest.getName() != null) product.setName(productRequest.getName());
@@ -47,7 +49,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<ProductResponse> deleteProduct(Integer id) {
+    public ResponseEntity<ProductResponse> deleteProduct(Integer id, String token) {
+        webService.checkToken(token);
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Product", "id", id));
         productRepository.delete(product);
@@ -55,7 +58,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<ProductResponse> getProduct(int id) {
+    public ResponseEntity<ProductResponse> getProduct(int id, String token) {
+        webService.checkToken(token);
         Optional<Product> product = productRepository.findById(id);
         if(product.isPresent()) {
             ProductResponse response = mapToProductResponse(product.get());
@@ -67,7 +71,8 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ResponseEntity<Iterable<ProductResponse>> getAllProducts() {
+    public ResponseEntity<Iterable<ProductResponse>> getAllProducts(String token) {
+        webService.checkToken(token);
         Iterable<ProductResponse> products = productRepository.findAll().stream().map(this::mapToProductResponse).toList();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }

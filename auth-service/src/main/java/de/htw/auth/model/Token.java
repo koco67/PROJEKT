@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 import lombok.*;
 
 @Entity
-@Table(name = "tokens")
+@Table(name = "token")
 @Builder
 @Getter
 @Setter

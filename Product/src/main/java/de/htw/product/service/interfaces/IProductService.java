@@ -8,13 +8,13 @@ import java.net.URISyntaxException;
 
 public interface IProductService
 {
-    ResponseEntity<ProductResponse> createProduct (ProductRequest productRequest) throws URISyntaxException;
+    ResponseEntity<ProductResponse> createProduct (ProductRequest productRequest, String token) throws URISyntaxException;
 
-    ResponseEntity<ProductResponse> updateProduct (Integer id, ProductRequest productRequest);
+    ResponseEntity<ProductResponse> updateProduct (Integer id, ProductRequest productRequest, String token);
 
-    ResponseEntity<ProductResponse> deleteProduct (Integer id);
+    ResponseEntity<ProductResponse> deleteProduct (Integer id, String token);
 
-    ResponseEntity<ProductResponse> getProduct(int id);
+    ResponseEntity<ProductResponse> getProduct(int id, String token);
 
-    ResponseEntity<Iterable<ProductResponse>> getAllProducts();
+    ResponseEntity<Iterable<ProductResponse>> getAllProducts(String token);
 }
