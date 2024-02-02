@@ -73,18 +73,25 @@ body {
 
 .product-description {
     display: table;
-    background-color: rgba(219, 229, 229, 0.85);
+    background-color: #333;
     padding: 10px;
     margin: 40px;
     line-height: 40px;
+    font-size: 32px;
+    color: white;
+
 }
 .basketButton {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 25px;
-    font-size: 18px;
-    border: none;
+    display:flex;
+    background-color: lightgray;
+    height: 80%;
+    width: 300px;
+    margin-left: 5%;
+    align-items: center;
+    justify-content: center;
+    border-radius:  4px;
     cursor: pointer;
+    font-size: 32px;
 }
 
 .menu-icon {
