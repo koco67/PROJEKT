@@ -9,9 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SongRequest {
-    private String title;
-    private String artist;
-    private String label;
-    private int released;
+public class ProductResponse {
+    private Integer id;
+    private String name;
+    private String foiltype;
+    private String description;
+    private String price;
 }
