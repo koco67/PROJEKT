@@ -24,17 +24,12 @@ public class AuthController {
         return authService.checkToken(token);
     }
 
-    @GetMapping(path = "/tokens", produces = MediaType.TEXT_PLAIN_VALUE)
+    @GetMapping(path = "/token", produces = MediaType.TEXT_PLAIN_VALUE)
     public String getUserIdByToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         return authService.getUserIdByToken(token);
     }
-    @PostMapping(value = "/users")
+    @PostMapping(value = "/user")
     public Boolean createUser(@RequestBody String password,String email, String firstName, String lastName) {
         return authService.createUser(password, email, firstName, lastName);
-    }
-
-    @GetMapping(value = "/users")
-    public Boolean verifyLogin(@RequestBody String password,String email) {
-        return authService.verifyLogin(password, email);
     }
 }

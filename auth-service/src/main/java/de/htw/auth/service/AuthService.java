@@ -66,7 +66,4 @@ public class AuthService {
 
         return true;
     }
-    public boolean verifyLogin(String password,String email){
-        return userRepository.existsUserByEmailAndPassword(password, email);
-    }
 }
