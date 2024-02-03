@@ -3,6 +3,7 @@ package de.htw.auth.service;
 import de.htw.auth.dto.UserRequest;
 import de.htw.auth.exception.UnauthorizedException;
 import de.htw.auth.model.Token;
+import de.htw.auth.model.User;
 import de.htw.auth.repository.TokenRepository;
 import de.htw.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
 import java.util.Base64;
+
+import static java.lang.Math.random;
 
 @Service
 @RequiredArgsConstructor
@@ -52,5 +55,18 @@ public class AuthService {
         byte[] randomBytes = new byte[24];
         secureRandom.nextBytes(randomBytes);
         return base64Encoder.encodeToString(randomBytes);
+    }
+    public boolean createUser(String password,String email, String firstName, String lastName) {
+        String userId;
+        do {
+            userId = String.valueOf(random() * 100);
+        } while (userRepository.existsById(userId));
+        User user = new User(password, email, firstName, lastName, userId);
+        userRepository.save(user);
+
+        return true;
+    }
+    public boolean verifyLogin(String password,String email){
+        return userRepository.existsUserByEmailAndPassword(password, email);
     }
 }

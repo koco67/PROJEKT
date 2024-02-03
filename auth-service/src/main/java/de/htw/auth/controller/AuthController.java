@@ -28,4 +28,13 @@ public class AuthController {
     public String getUserIdByToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         return authService.getUserIdByToken(token);
     }
+    @PostMapping(value = "/users")
+    public Boolean createUser(@RequestBody String password,String email, String firstName, String lastName) {
+        return authService.createUser(password, email, firstName, lastName);
+    }
+
+    @GetMapping(value = "/users")
+    public Boolean verifyLogin(@RequestBody String password,String email) {
+        return authService.verifyLogin(password, email);
+    }
 }
