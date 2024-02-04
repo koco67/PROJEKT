@@ -60,7 +60,7 @@ public class AuthService {
         return base64Encoder.encodeToString(randomBytes);
     }
     public ResponseEntity<UserResponse> createUser(UserRequest userRequest) {
-        if(userRequest.getEmail() == null || userRequest.getPassword() == null || userRequest.getRole() == null || userRequest.getFirstName() == null || userRequest.getLastName() == null) {
+        if(userRequest.getEmail() == null || userRequest.getPassword() == null || userRequest.getRole() == null) {
             throw new BadRequestException("Need email, password, role, first and last name");
         }
         User user = userBuilder(userRequest);
