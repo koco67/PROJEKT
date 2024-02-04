@@ -56,14 +56,17 @@ public class AuthService {
         secureRandom.nextBytes(randomBytes);
         return base64Encoder.encodeToString(randomBytes);
     }
-    public boolean createUser(String password,String email, String firstName, String lastName) {
+    public boolean createUser(UserRequest userRequest) {
         String userId;
         do {
             userId = String.valueOf(random() * 100);
         } while (userRepository.existsById(userId));
-        User user = new User(password, email, firstName, lastName, userId);
+        User user = new User(userRequest.getUserId(), userRequest.getPassword(), userRequest.getFirstName(), userRequest.getLastName(), userRequest.getEmail(), userRequest.getRole());
         userRepository.save(user);
 
         return true;
+    }
+    public boolean verifyAdmin(UserRequest userRequest) {
+        return userRequest.getRole().contains("ADMIN");
     }
 }
