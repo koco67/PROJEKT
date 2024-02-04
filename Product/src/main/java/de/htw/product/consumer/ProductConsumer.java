@@ -19,6 +19,7 @@ public class ProductConsumer {
     public void consume(String message){
 
         LOGGER.info(String.format("Received message -> %s", message));
+        String token = "";
         productService.getProduct(123, token);
     }
 }
