@@ -26,8 +26,8 @@ public class AuthController {
     }
 
     @GetMapping(path = "/token", produces = MediaType.TEXT_PLAIN_VALUE)
-    public String getUserIdByToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
-        return authService.getUserIdByToken(token);
+    public String getEmailByToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
+        return authService.getEmailByToken(token);
     }
     @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {

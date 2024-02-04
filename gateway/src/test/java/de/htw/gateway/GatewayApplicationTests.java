@@ -1,10 +1,10 @@
-package com.swa.frontend;
+package de.htw.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FrontendApplicationTests {
+class GatewayApplicationTests {
 
 	@Test
 	void contextLoads() {

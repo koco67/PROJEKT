@@ -15,5 +15,5 @@ import lombok.*;
 public class Token {
     @Id
     private String tokenString;
-    private String userId;
+    private String email;
 }
