@@ -38,10 +38,10 @@ public class AuthService {
         return tokenRepository.existsById(token);
     }
 
-    public String getUserIdByToken(String tokenString) {
+    public String getEmailByToken(String tokenString) {
         Token token = tokenRepository.findById(tokenString)
                 .orElseThrow(UnauthorizedException::new);
-        return token.getUserId();
+        return token.getEmail();
     }
 
     public ResponseEntity<String> verifyUser(UserRequest userRequest) {
@@ -76,8 +76,7 @@ public class AuthService {
         return User.builder()
                 .email(userRequest.getEmail())
                 .password(userRequest.getPassword())
-                .firstName(userRequest.getFirstName())
-                .lastName(userRequest.getLastName())
+                .role(userRequest.getRole())
                 .build();
     }
 }
