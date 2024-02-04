@@ -1,6 +1,7 @@
 package de.htw.auth.controller;
 
 import de.htw.auth.dto.UserRequest;
+import de.htw.auth.dto.UserResponse;
 import de.htw.auth.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -28,11 +29,11 @@ public class AuthController {
     public String getUserIdByToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         return authService.getUserIdByToken(token);
     }
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public Boolean createUser(@RequestBody UserRequest userRequest) {
+    @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
         return authService.createUser(userRequest);
     }
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/verify", consumes = MediaType.APPLICATION_JSON_VALUE)
     public boolean verifyAdmin(@RequestBody UserRequest userRequest) {
         return authService.verifyAdmin(userRequest);
     }

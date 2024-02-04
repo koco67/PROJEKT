@@ -41,7 +41,7 @@ class AuthTests {
 	private final String token = "NWA3tET3lrkL_aNPg3VhWro9gSa5sCg5";
 
 	@BeforeEach
-	private void setupMockMvc() {
+    public void setupMockMvc() {
 		mockMvc = MockMvcBuilders.standaloneSetup(new AuthController(authService)).build();
 	}
 
@@ -120,14 +120,14 @@ class AuthTests {
 
 	UserRequest getUserRequest() {
 		return UserRequest.builder()
-				.userId("maxime")
+				.email("maxime")
 				.password("pass1234")
 				.build();
 	}
 
 	UserRequest getUserRequest2() {
 		return UserRequest.builder()
-				.userId("maxime")
+				.email("maxime")
 				.password("pass4321")
 				.build();
 	}

@@ -1,12 +1,15 @@
 package de.htw.auth.service;
 
 import de.htw.auth.dto.UserRequest;
+import de.htw.auth.dto.UserResponse;
+import de.htw.auth.exception.BadRequestException;
 import de.htw.auth.exception.UnauthorizedException;
 import de.htw.auth.model.Token;
 import de.htw.auth.model.User;
 import de.htw.auth.repository.TokenRepository;
 import de.htw.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,12 +25,12 @@ public class AuthService {
     private final UserRepository userRepository;
     private final TokenRepository tokenRepository;
 
-    public String generateToken(String userId, String password) {
-        if(!userRepository.existsByUserIdAndPassword(userId, password)) {
+    public String generateToken(String email, String password) {
+        if(!userRepository.existsUserByEmailAndPassword(email, password)) {
             throw new UnauthorizedException();
         }
         String token = getToken();
-        tokenRepository.save(new Token(token, userId));
+        tokenRepository.save(new Token(token, email));
         return token;
     }
 
@@ -42,7 +45,7 @@ public class AuthService {
     }
 
     public ResponseEntity<String> verifyUser(UserRequest userRequest) {
-        String token = generateToken(userRequest.getUserId(), userRequest.getPassword());
+        String token = generateToken(userRequest.getEmail(), userRequest.getPassword());
         return ResponseEntity.ok()
                 .contentType(MediaType.TEXT_PLAIN)
                 .body(token);
@@ -56,17 +59,25 @@ public class AuthService {
         secureRandom.nextBytes(randomBytes);
         return base64Encoder.encodeToString(randomBytes);
     }
-    public boolean createUser(UserRequest userRequest) {
-        String userId;
-        do {
-            userId = String.valueOf(random() * 100);
-        } while (userRepository.existsById(userId));
-        User user = new User(userRequest.getUserId(), userRequest.getPassword(), userRequest.getFirstName(), userRequest.getLastName(), userRequest.getEmail(), userRequest.getRole());
+    public ResponseEntity<UserResponse> createUser(UserRequest userRequest) {
+        User user = userBuilder(userRequest);
+        if(userRepository.existsUserByEmail(user.getEmail())) {
+            throw new BadRequestException("Account with email already exists!");
+        }
         userRepository.save(user);
 
-        return true;
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
     public boolean verifyAdmin(UserRequest userRequest) {
         return userRequest.getRole().contains("ADMIN");
+    }
+
+    private User userBuilder(UserRequest userRequest) {
+        return User.builder()
+                .email(userRequest.getEmail())
+                .password(userRequest.getPassword())
+                .firstName(userRequest.getFirstName())
+                .lastName(userRequest.getLastName())
+                .build();
     }
 }
