@@ -60,6 +60,9 @@ public class AuthService {
         return base64Encoder.encodeToString(randomBytes);
     }
     public ResponseEntity<UserResponse> createUser(UserRequest userRequest) {
+        if(userRequest.getEmail() == null || userRequest.getPassword() == null || userRequest.getRole() == null || userRequest.getFirstName() == null || userRequest.getLastName() == null) {
+            throw new BadRequestException("Need email, password, role, first and last name");
+        }
         User user = userBuilder(userRequest);
         if(userRepository.existsUserByEmail(user.getEmail())) {
             throw new BadRequestException("Account with email already exists!");
@@ -76,8 +79,7 @@ public class AuthService {
         return User.builder()
                 .email(userRequest.getEmail())
                 .password(userRequest.getPassword())
-                .firstName(userRequest.getFirstName())
-                .lastName(userRequest.getLastName())
+                .role(userRequest.getRole())
                 .build();
     }
 }
