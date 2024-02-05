@@ -20,9 +20,9 @@ public class WebService {
         if(!authorized) throw new UnauthorizedException();
     }
 
-    public String getUserIdByToken(String token) {
+    public String getEmailByToken(String token) {
         return webClientBuilder.build().get()
-                .uri("http://auth-service/rest/auth/tokens")
+                .uri("http://auth-service/rest/auth/token")
                 .header("Authorization", token)
                 .retrieve()
                 .bodyToMono(String.class)
