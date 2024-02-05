@@ -1,0 +1,94 @@
+version: "3.9"
+
+services:
+  database1:
+    image: mysql:8.0
+    container_name: mysql1
+    ports:
+      - "3366:3306"
+    environment:
+      MYSQL_DATABASE: sql11677927
+      MYSQL_USER: sql11677927
+      MYSQL_PASSWORD: bQWR76Jty8
+      MYSQL_ROOT_PASSWORD: pass
+
+    networks:
+      - internal
+
+  database2:
+    image: mysql:8.0
+    container_name: mysql2
+    ports:
+      - "3367:3306"
+    environment:
+      MYSQL_DATABASE: sql11681873
+      MYSQL_USER: sql11681873
+      MYSQL_PASSWORD: YNwbiupSuY
+      MYSQL_ROOT_PASSWORD: pass
+
+    networks:
+      - internal
+
+  rabbitmq-container:
+    image: rabbitmq:3.11-management
+    hostname: rabbitmq-container
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "user"
+      RABBITMQ_DEFAULT_PASS: "user"
+    networks:
+      - internal
+
+  auth-service:
+    image: auth-service
+    ports:
+      - "8081:8081"
+
+  discovery-server:
+    image: discovery-server
+    build:
+      context: ./discovery-server
+    ports:
+      - "8761:8761"
+
+  frontend:
+    image: frontend-service
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+
+  gateway:
+    image: gateway-service
+    build:
+      context: ./gateway
+    ports:
+      - "8080:8080"
+
+  payment:
+    image: payment-service
+    build:
+      context: ./payment
+    ports:
+      - "8083:8083"
+
+  product:
+    image: product-service
+    build:
+      context: ./product
+    ports:
+      - "8082:8082"
+    depends_on:
+      - database1
+      - database2
+      - rabbitmq-container
+    links:
+      - database1
+      - database2
+  
+
+networks:
+  internal:
+    name: internal
