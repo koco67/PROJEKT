@@ -2,6 +2,7 @@ package de.htw.product.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JoinFormula;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,9 +17,9 @@ import java.util.List;
 public class Basket {
     @Id
     private String owner;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "basket_products",
-    joinColumns = {@JoinColumn(name = "basket_id", referencedColumnName = "id")},
+    joinColumns = {@JoinColumn(name = "owner", referencedColumnName = "owner")},
     inverseJoinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")})
-    private HashMap<Product, Integer> products;
+    private List<Product> products;
 }

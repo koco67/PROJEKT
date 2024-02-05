@@ -16,5 +16,5 @@ import java.util.List;
 public class BasketResponse {
     private Integer id;
     private String owner;
-    private HashMap<Product, Integer> products;
+    private List<Product> products;
 }

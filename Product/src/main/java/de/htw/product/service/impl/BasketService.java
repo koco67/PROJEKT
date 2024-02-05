@@ -13,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -25,7 +25,7 @@ public class BasketService implements IBasketService {
     @Override
     public ResponseEntity<BasketResponse> getBasket(String token) {
         String email = webService.getEmailByToken(token);
-        Basket basket = basketRepository.findByEmail(email);
+        Basket basket = basketRepository.findByOwner(email);
         BasketResponse basketResponse = mapToBasketResponse(basket);
         return ResponseEntity.ok().body(basketResponse);
     }
@@ -33,21 +33,16 @@ public class BasketService implements IBasketService {
     @Override
     public ResponseEntity<BasketResponse> addToBasket(String token, ProductRequest productRequest) {
         String email = webService.getEmailByToken(token);
-        Basket basket = basketRepository.findByEmail(email);
+        Basket basket = basketRepository.findByOwner(email);
         Product product = productBuilder(productRequest);
         if(basket != null) {
-            if(basket.getProducts().containsKey(product)) {
-                basket.getProducts().put(product, basket.getProducts().get(product) + 1);
-            }
-            else {
-                basket.getProducts().put(product, 1);
-            }
+            basket.getProducts().add(product);
         }
 
         else {
-            HashMap<Product, Integer> products = new HashMap<>();
+            List<Product> products = new ArrayList<>();
             basket = new Basket(email, products);
-            basket.getProducts().put(product, 1);
+            basket.getProducts().add(product);
         }
         basketRepository.save(basket);
         return ResponseEntity.ok().build();
@@ -56,13 +51,11 @@ public class BasketService implements IBasketService {
     @Override
     public ResponseEntity<BasketResponse> removeFromBasket(String token, ProductRequest productRequest) {
         String email = webService.getEmailByToken(token);
-        Basket basket = basketRepository.findByEmail(email);
+        Basket basket = basketRepository.findByOwner(email);
         Product product = productBuilder(productRequest);
         if(basket != null) {
-            if(basket.getProducts().containsKey(product)) {
-                basket.getProducts().put(product, basket.getProducts().get(product) - 1);
-                if(basket.getProducts().get(product) == 0) basket.getProducts().remove(product);
-            }
+            basket.getProducts().stream().filter(x -> Objects.equals(x.getName(), product.getName()))
+                    .findFirst().ifPresent(basket.getProducts()::remove);
             basketRepository.save(basket);
         }
         return ResponseEntity.ok().build();

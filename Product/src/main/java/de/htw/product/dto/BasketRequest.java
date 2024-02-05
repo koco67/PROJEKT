@@ -15,5 +15,5 @@ import java.util.List;
 @NoArgsConstructor
 public class BasketRequest {
     private String owner;
-    private HashMap<Product, Integer> products;
+    private List<Product> products;
 }
