@@ -17,8 +17,6 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.util.Base64;
 
-import static java.lang.Math.random;
-
 @Service
 @RequiredArgsConstructor
 public class AuthService {
