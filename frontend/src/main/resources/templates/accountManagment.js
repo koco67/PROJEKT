@@ -15,7 +15,7 @@ function registerUser() {
         return;
     }
 
-    fetch('http://localhost:8080/rest/auth', {
+    fetch('http://localhost:8080/rest/auth/create', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,6 +33,38 @@ function registerUser() {
     })
     .catch(error => {
         console.error('Error registering user:', error);
+    });
+}
+
+function loginUser() {
+    const email = document.getElementById('email').value;
+    const psw = document.getElementById('psw').value;
+
+    const loginData = {
+        email: email,
+        psw: psw
+    };
+
+    fetch('http://localhost:8080/rest/auth/verify', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+    })
+    .then(response => {
+        if (response.ok) {
+            console.log('Login successful.');
+        } else if (response.status === 401) {
+            alert('Invalid password.');
+        } else if (response.status === 404) {
+            alert('User not found.');
+        } else {
+            alert('Login failed.');
+        }
+    })
+    .catch(error => {
+        console.error('Error logging in:', error);
     });
 }
 
