@@ -62,12 +62,12 @@ public class MQConfig {
     @Bean
     public Binding removeItemBinding(Queue removeProductQueue, TopicExchange exchange){
         return BindingBuilder
-                .bind(removeProductQueue).to(exchange).with(addProductToCart);
+                .bind(removeProductQueue).to(exchange).with(removeProductFromCart);
     }
     @Bean
     public Binding updateItemBinding(Queue updateProductQueue, TopicExchange exchange){
         return BindingBuilder
-                .bind(updateProductQueue).to(exchange).with(addProductToCart);
+                .bind(updateProductQueue).to(exchange).with(updateProductCart);
     }
     @Bean
     public MessageConverter productMessageJsonConverter() {

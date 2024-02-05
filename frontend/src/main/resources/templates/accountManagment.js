@@ -2,7 +2,7 @@ function registerUser() {
     const email = document.getElementById('email').value;
     const psw = document.getElementById('psw').value;
     const pswRepeat = document.getElementById('pswRepeat').value;
-    const role = USER;
+    const role = "USER";
 
     const registrationData = {
         email: email,

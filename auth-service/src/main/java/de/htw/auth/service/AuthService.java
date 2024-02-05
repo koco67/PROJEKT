@@ -9,6 +9,7 @@ import de.htw.auth.model.User;
 import de.htw.auth.repository.TokenRepository;
 import de.htw.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -66,8 +67,14 @@ public class AuthService {
             throw new BadRequestException("Account with email already exists!");
         }
         userRepository.save(user);
+        HttpHeaders responseHeaders = new HttpHeaders();
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        responseHeaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
+        responseHeaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, PUT, DELETE");
+        responseHeaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
+
+
+        return new ResponseEntity<>(responseHeaders, HttpStatus.CREATED);
     }
     public boolean verifyAdmin(UserRequest userRequest) {
         return userRequest.getRole().contains("ADMIN");
