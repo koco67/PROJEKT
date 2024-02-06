@@ -33,7 +33,8 @@ function registerUser() {
     })
     .then(token => {
         localStorage.setItem('accessToken', token);
-        // Weiterleitung zu einer anderen Seite oder Aktualisierung der Benutzeroberfläche
+        window.location.href = 'login.html';
+        // Weiterleitung zur login.html um sich dann anzumelden
     })
     .catch(error => {
         console.error('Error registering user:', error);
@@ -59,6 +60,7 @@ function loginUser() {
     .then(response => {
         if (response.ok) {
             console.log('Login successful.');
+            
         } else if (response.status === 401) {
             alert('Invalid password.');
         } else if (response.status === 404) {
