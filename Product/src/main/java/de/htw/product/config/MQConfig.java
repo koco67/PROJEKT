@@ -14,25 +14,25 @@ import org.springframework.context.annotation.Configuration;
 public class MQConfig {
 
     @Value("add_product")
-    private String addProductQueue;
+    public static String addProductQueue;
 
     @Value("remove_product")
-    private String removeProductQueue;
+    public static String removeProductQueue;
 
     @Value("product_exchange")
-    private String exchange;
+    public static String exchange;
 
     @Value("update_product")
-    private String updateProductQueue;
+    public static String updateProductQueue;
 
     @Value("add_product_to_cart")
-    private String addProductToCart;
+    public static String addProductToCart;
 
     @Value("remove_product_from_cart")
-    private String removeProductFromCart;
+    public static String removeProductFromCart;
 
     @Value("update_product_cart")
-    private String updateProductCart;
+    public static String updateProductCart;
 
     @Bean
     public Queue addProductQueue(){

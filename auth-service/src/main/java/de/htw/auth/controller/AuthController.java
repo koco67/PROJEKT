@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = {"http://localhost:63342"})
 @RestController
 @RequestMapping(value = "/rest/auth")
 @RequiredArgsConstructor
@@ -22,23 +22,19 @@ public class AuthController {
     }
 
     @GetMapping
-    @CrossOrigin(origins = "*")
     public Boolean checkToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         return authService.checkToken(token);
     }
 
     @GetMapping(path = "/token", produces = MediaType.TEXT_PLAIN_VALUE)
-    @CrossOrigin(origins = "*")
     public String getEmailByToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String token) {
         return authService.getEmailByToken(token);
     }
     @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @CrossOrigin(origins = "*")
     public ResponseEntity<UserResponse> createUser(@RequestBody UserRequest userRequest) {
         return authService.createUser(userRequest);
     }
     @PostMapping(path = "/verify", consumes = MediaType.APPLICATION_JSON_VALUE)
-    @CrossOrigin(origins = "*")
     public boolean verifyAdmin(@RequestBody UserRequest userRequest) {
         return authService.verifyAdmin(userRequest);
     }

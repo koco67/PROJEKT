@@ -67,14 +67,14 @@ public class AuthService {
             throw new BadRequestException("Account with email already exists!");
         }
         userRepository.save(user);
-        HttpHeaders responseHeaders = new HttpHeaders();
 
-        responseHeaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
-        responseHeaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, PUT, DELETE");
-        responseHeaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS, "true");
+        HttpHeaders responseheaders = new HttpHeaders();
+        responseheaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN,"http://localhost:63342");
+        responseheaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_CREDENTIALS,"POST");
+        responseheaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS,"true");
+        responseheaders.set(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS,"true");
 
-
-        return new ResponseEntity<>(responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(responseheaders, HttpStatus.CREATED);
     }
     public boolean verifyAdmin(UserRequest userRequest) {
         return userRequest.getRole().contains("ADMIN");
