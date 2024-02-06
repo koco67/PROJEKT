@@ -31,6 +31,10 @@ function registerUser() {
             alert('Registration failed.');
         }
     })
+    .then(token => {
+        localStorage.setItem('accessToken', token);
+        // Weiterleitung zu einer anderen Seite oder Aktualisierung der Benutzeroberfläche
+    })
     .catch(error => {
         console.error('Error registering user:', error);
     });
@@ -66,5 +70,10 @@ function loginUser() {
     .catch(error => {
         console.error('Error logging in:', error);
     });
+}
+
+function changeEmailParagraph() {
+    const email = localStorage.getItem('accessToken').toString;
+    document.getElementById('emailParagraph').innerHTML = email;
 }
 
