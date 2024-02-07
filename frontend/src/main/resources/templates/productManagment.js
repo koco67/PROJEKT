@@ -39,7 +39,7 @@ function giveTestToken() {
 function cardDirection(element) {
 
     id=element.id;
-    giveTestToken();
+    //giveTestToken();
 
     let name = "Produktname";
     let foiltype = "Folientyp";
@@ -54,7 +54,7 @@ function cardDirection(element) {
     const options = {
         method: 'GET',
         headers: {
-            'Authorization': localStorage.getItem('accessToken')
+            'Authorization': "localStorage.getItem('accessToken')"
         }
     };
 
