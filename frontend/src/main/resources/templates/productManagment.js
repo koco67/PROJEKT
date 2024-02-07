@@ -1,4 +1,4 @@
-let id = 0;
+//let id = 0;
 
 function giveTestToken() {
 
@@ -38,7 +38,7 @@ function giveTestToken() {
 
 function cardDirection(element) {
 
-    id=element.id;
+    let id=element.id;
     //giveTestToken();
 
     let name = "Produktname";
@@ -73,6 +73,7 @@ function cardDirection(element) {
             price = parseFloat(data.price);
             console.log(data);
 
+            document.getElementById("cardID").innerText(id);
             document.getElementById("cardName").innerText(name);
             document.getElementById("cardDescription").innerText(description);
             document.getElementById("cardPrice").innerText(price);
