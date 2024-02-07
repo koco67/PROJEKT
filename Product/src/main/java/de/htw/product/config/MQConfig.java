@@ -25,14 +25,14 @@ public class MQConfig {
     @Value("update_product")
     public static String updateProductQueue;
 
-    @Value("add_product_to_cart")
-    public static String addProductToCart;
+    @Value("add_product_to_basket")
+    public static String addProductToBasket;
 
-    @Value("remove_product_from_cart")
-    public static String removeProductFromCart;
+    @Value("remove_product_from_basket")
+    public static String removeProductFromBasket;
 
-    @Value("update_product_cart")
-    public static String updateProductCart;
+    @Value("update_product_basket")
+    public static String updateProductBasket;
 
     @Bean
     public Queue addProductQueue(){
@@ -57,17 +57,17 @@ public class MQConfig {
     @Bean
     public Binding addItemBinding(Queue addProductQueue, TopicExchange exchange){
         return BindingBuilder
-                .bind(addProductQueue).to(exchange).with(addProductToCart);
+                .bind(addProductQueue).to(exchange).with(addProductToBasket);
     }
     @Bean
     public Binding removeItemBinding(Queue removeProductQueue, TopicExchange exchange){
         return BindingBuilder
-                .bind(removeProductQueue).to(exchange).with(removeProductFromCart);
+                .bind(removeProductQueue).to(exchange).with(removeProductFromBasket);
     }
     @Bean
     public Binding updateItemBinding(Queue updateProductQueue, TopicExchange exchange){
         return BindingBuilder
-                .bind(updateProductQueue).to(exchange).with(updateProductCart);
+                .bind(updateProductQueue).to(exchange).with(updateProductBasket);
     }
     @Bean
     public MessageConverter productMessageJsonConverter() {
